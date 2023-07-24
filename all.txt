@@ -1,4 +1,0 @@
-Libs { jagger, coercer }
-adrian { app web }
-chickie { app desktop, app web }
-dailytasker { app desktop, app web }

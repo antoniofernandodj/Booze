@@ -152,7 +152,10 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def dictionary(self, required_keys=None, optional_keys=None) -> 'Coerce':
+    def dictionary(
+            self, required_keys: t.Optional[t.List[str]]=None,
+            optional_keys: t.Optional[t.List[str]]=None
+        ) -> 'Coerce':
         """
         Add a Dictionary validator to the Coerce instance.
 
@@ -171,7 +174,7 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def required_keys(self, required_keys) -> 'Coerce':
+    def required_keys(self, required_keys: t.Optional[t.List[str]]=None) -> 'Coerce':
         """
         Add a RequiredKeys validator to the Coerce instance.
 
@@ -185,7 +188,11 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def dict(self, *, required_keys=None, optional_keys=None) -> 'Coerce':
+    def dict(
+            self,
+            required_keys: t.Optional[t.List[str]]=None,
+            optional_keys: t.Optional[t.List[str]]=None
+        ) -> 'Coerce':
         """
         Add a Dictionary validator to the Coerce instance.
 
@@ -215,12 +222,12 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def min(self, minimum) -> 'Coerce':
+    def min(self, minimum: int) -> 'Coerce':
         """
         Add a Min validator to the Coerce instance.
 
         Args:
-            minimum (Any): The minimum value allowed.
+            minimum (int): The minimum value allowed.
 
         Returns:
             Coerce: The updated Coerce instance.
@@ -229,12 +236,12 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def max(self, maximum) -> 'Coerce':
+    def max(self, maximum: int) -> 'Coerce':
         """
         Add a Max validator to the Coerce instance.
 
         Args:
-            maximum (Any): The maximum value allowed.
+            maximum (int): The maximum value allowed.
 
         Returns:
             Coerce: The updated Coerce instance.
@@ -243,7 +250,7 @@ class Coerce:
         self.validations.append(validator)
         return self
     
-    def min_length(self, min) -> 'Coerce':
+    def min_length(self, min: int) -> 'Coerce':
         """
         Add a MinLength validator to the Coerce instance.
 
@@ -257,7 +264,7 @@ class Coerce:
         self.validations.append(validator)
         return self
     
-    def max_length(self, maximum) -> 'Coerce':
+    def max_length(self, maximum: int) -> 'Coerce':
         """
         Add a MaxLength validator to the Coerce instance.
 
@@ -299,7 +306,7 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def contains(self, element) -> 'Coerce':
+    def contains(self, element: any) -> 'Coerce':
         """
         Add a Contains validator to the Coerce instance.
 
@@ -335,7 +342,7 @@ class Coerce:
         self.validations.append(validator)
         return self
 
-    def parse(self, value) -> 'Coerce':
+    def parse(self, value: t.Any) -> 'Coerce':
         """
         Parse and validate the given value based on the registered validation rules.
 

@@ -13,6 +13,11 @@ python = "^3.10"
 mypy = "^1.4.1"
 pytest = "^7.4.0"
 
+
+[tool.poetry.group.doc.dependencies]
+mkdocstrings-python = "^1.2.1"
+mkdocs-material = "^9.1.19"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

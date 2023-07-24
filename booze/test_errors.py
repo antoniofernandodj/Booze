@@ -4,7 +4,7 @@ from booze.coercer import Coerce
 
 
 
-def test_parsing_error_json():
+def test_parsing_error_dict():
     class MyClass(Base):
         name = Coerce('name').string().length(3, 10)
 
@@ -12,7 +12,7 @@ def test_parsing_error_json():
         obj = MyClass(name="John Doe")
         assert obj.name == "John Doe" 
     except ParsingError as error:
-        error_json = error.json()
+        error_json = error.dict()
         assert error_json == {
             'Error': 'Input value for "name" must have a length between 3 and 10 characters.',
             'ValidationFunction': '_validate_length',
@@ -40,7 +40,7 @@ def test_parsing_error_coercer_name():
         obj = MyClass(weight=120.0)
         assert obj.weight == 120.0
     except ParsingError as error:
-        error_json = error.json()
+        error_json = error.dict()
         assert error_json == {
             'Error': 'Erro na validação dos dados do valor 120.0',
             'ValidationFunction': 'validator: Max',
@@ -57,7 +57,7 @@ def test_parsing_error_different_validations():
         assert obj.num == 30
         assert obj.fav_colors == ["red", "green"]
     except ParsingError as error:
-        error_json = error.json()
+        error_json = error.dict()
         assert error_json == {
             'Error': 'Erro na validação dos dados do valor 30',
             'ValidationFunction': 'validator: Strict',

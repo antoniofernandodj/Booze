@@ -1,0 +1,21 @@
+site_name: Booze
+repo_url: https://github.com/antoniofernandodj/Booze
+repo_name: "Booze"
+
+nav:
+  - Home: 'index.md'
+  - Base: 'api/base.md'
+  - Validators: 'api/validators.md'
+  - Errors: 'api/errors.md'
+  - Coercer: 'api/coercer.md'
+
+
+theme:
+  name: "material"
+  language: "pt-BR"
+
+plugins:
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [booze]

@@ -5,7 +5,5 @@ class Pessoa(Base):
     idade = Coerce('idade').min(18).max(30)
     email = Coerce('email').string().email()
     
-try:
-    p1 = Pessoa(nome='luiza',idade=17,email='analufavacho@gmail.com')
-except ParsingError as erro:
-    print(erro.json())
+
+p1 = Pessoa(nome='luiza', idade=20, email='analufavacho@gmail.com')

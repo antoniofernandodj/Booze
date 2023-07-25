@@ -124,7 +124,7 @@ class Base:
             except KeyError:
                 raise ParsingError('Erro na atribuição do valor. '
                                     'Você lembrou de cadastrar um Coercer para ela?')
-
+                
             parsed = parser.parse(value)
 
             obj.__setattr__(key, parsed)

@@ -1,5 +1,6 @@
 from typing import Optional
 from contextlib import suppress
+from typing import Union
 with suppress(ImportError):
     from booze.coercer import Coerce
 
@@ -30,12 +31,13 @@ class ParsingError(Exception):
     """
 
     def __init__(
-            self, message: str,
+            self, msg: str,
             validation_func: str = 'Initializing',
             coercer: Optional['Coerce'] = None
         ):
-        super().__init__(message)
-        self.message = message
+        str_msg = str(msg)
+        super().__init__(str_msg)
+        self.msg = msg
         self.validation_func = validation_func
         self.coercer = coercer
 
@@ -46,11 +48,18 @@ class ParsingError(Exception):
         Returns:
             dict: A dictionary containing the error message, validation function name, and Coerce object.
         """
-        return {
-            'Error': self.message,
-            'ValidationFunction': self.validation_func,
-            'Coercer': self.coercer
-        }
+        if self.coercer is not None:
+            return {
+                'Error': self.msg,
+                'ValidationFunction': self.validation_func,
+                'Field': self.coercer.name
+            }
+        else:
+            return {
+                'Error Messages': self.msg,
+                'Validation': self.validation_func
+            }
+        
 
     def __str__(self) -> str:
         """
@@ -59,4 +68,4 @@ class ParsingError(Exception):
         Returns:
             str: A string containing the error message, validation function name, and Coerce object.
         """
-        return f"ParsingError: {self.message}, ValidationFunction: {self.validation_func}, Coercer: {self.coercer}"
+        return f"ParsingError: {self.msg}, ValidationFunction: {self.validation_func}, Coercer: {self.coercer}"

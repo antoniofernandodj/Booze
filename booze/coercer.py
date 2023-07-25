@@ -26,7 +26,7 @@ class Coerce:
         print(parsed_value)  # Output: 50
 
     """
-    def __init__(self, name:str=str(uuid.uuid4()), message:Optional[str]=None) -> None:
+    def __init__(self, name:str=None, message:Optional[str]=None) -> None:
         from booze.validators import Validator
         self.name = name
         self.value = None
@@ -433,7 +433,7 @@ class Coerce:
                     pass
                 
                 raise ParsingError(
-                    msg, f'validator: {type(validation).__name__}',
+                    msg, type(validation).__name__,
                     self
                 )
                 

@@ -81,9 +81,12 @@ class Base:
             >>> "See class-level examples for usage."
         """
         parsers = {}
-        for key, item in cls.__dict__.items():
-            if not str(key).startswith('_'):
-                parsers[key] = item
+        for field, Coercer in cls.__dict__.items():
+            if not str(field).startswith('_'):
+                if Coercer.name is None:
+                    Coercer.name = field
+                
+                parsers[field] = Coercer
 
         def repr(self):
             """
